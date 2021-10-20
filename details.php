@@ -26,6 +26,7 @@ $abcd=@$_GET['stumail'];
     <title>Document</title>
     <link rel="stylesheet" href="home2.css">
     <script src="https://kit.fontawesome.com/7f91e9d89d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     
 </head>
 <body>
@@ -46,7 +47,7 @@ $abcd=@$_GET['stumail'];
        {
 		$name = $row['p_name'];
         $emailid = $row['email'];
-        $phone = $row['phone_no'];
+        $phone = $row['p_no'];
         $experience = $row['experience'];
         $about = $row['about_me'];
         $specialties = $row['specialties'];
@@ -81,19 +82,31 @@ $abcd=@$_GET['stumail'];
             </div>
             <br>
             <br>
-    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Contact Details:</h6>
-    <div class="row">
-    <div class="col-sm-6">
-    <a href="details.php?id='.$id.'&profmail='.$pemail.'&stumail='.$email.'" class="btn">Book Appointment </a>
+<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Contact Details:</h6>
+<div class="row">
+
+<div class="col-sm-6">
+<a href="book.php?id='.$id.'&profmail='.$pemail.'&stumail='.$email.'" class="btn">Book Appointment </a>
 </div>
+
 <div class="col-sm-6">
 <p class="m-b-10 f-w-600">Chat with me:</p>
-<i class="fas fa-comments" style="font-size:36px;"></i>
+<a href="https://wa.me/91' .$phone.'" class="whatsapp_float" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"  style="font-size:36px; color:black;"></i></a>
 </div>
+<br>
+<div class="col-sm-6">
+            <p class="m-b-10 f-w-600">Email (copy email id before starting video call)</p>
+           <input style="font-size: 20px;" class="text-muted f-w-400" type="text" value="'.$emailid.'" id="myInput">
+             <button  onclick="myFunction()"><i class="fas fa-clipboard" style="font-size:30px;"></i></button>
+        </div>
+
+        <br>
+
 <div class="col-sm-6">
 <p class="m-b-10 f-w-600">Video Call:</p>
-<i class="fas fa-video" style="font-size:36px;"></i>
+<a href="http://meet.google.com/new"><i class="fas fa-video" style="font-size:36px; color:black;"></i></a>
 </div>  
+
     </div>
 </div>
 </div>
@@ -126,3 +139,19 @@ $abcd=@$_GET['stumail'];
 	letter-spacing: 1px;
 }
 </style>
+<script>
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+  
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}
+</script>
